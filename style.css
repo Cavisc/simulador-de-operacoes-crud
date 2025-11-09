@@ -1,0 +1,865 @@
+* {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Ubuntu', sans-serif;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+:root {
+    --primary: #2387ff;
+    --primary-light: #bdd9ff;
+
+    --gray-light: #f5f5f5;
+    --gray: #ccc;
+    --gray-dark: #7a7a7a;
+
+    --text-color: #353535;
+    --background: #f8fafc;
+
+    --create: #0cf574;
+    --read: #c5edac;
+    --update: #f4ac45;
+    --delete: #ff312e;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    min-height: 100vh;
+    scrollbar-color: var(--gray) var(--gray-light);
+    scrollbar-width: thin;
+}
+
+body::-webkit-scrollbar {
+    width: 1rem;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: var(--gray-light);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--gray);
+    border-radius: 4px;
+    border: 3px solid var(--gray-light);
+}
+
+header {
+    align-items: center;
+    background-color: var(--primary-light);
+    border-bottom: 2px solid var(--primary);
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 2rem 1rem;
+    text-transform: uppercase;
+}
+
+.logo {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: .25rem;
+}
+
+.logo-image {
+    width: 5rem;
+}
+
+.logotipo {
+    display: flex;
+    flex-direction: column;
+}
+
+.logotipo span {
+    font-size: small;
+    font-weight: bold;
+}
+
+.logotipo span a {
+    color: var(--primary);
+    font-size: xxx-large;
+    font-weight: bold;
+    transition: all 0.1s ease-in-out;
+}
+
+.logotipo span a:hover {
+    color: var(--background);
+}
+
+.emphasis {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+}
+
+header .rate {
+    align-items: center;
+    background-color: var(--gray-light);
+    border-radius: 4px;
+    color: var(--primary);
+    cursor: pointer;
+    display: flex;
+    font-size: 1rem;
+    font-weight: bolder;
+    height: 4rem;
+    justify-content: center;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-transform: uppercase;
+    transition: all .1s ease-in-out;
+    width: 8rem;
+}
+
+header .rate:hover {
+    background-color: var(--primary);
+    color: var(--background);
+    text-decoration-style: wavy;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+p {
+    line-height: 1.3;
+    font-weight: 500;
+}
+
+main {
+    display: flex;
+    flex: 1;
+}
+
+.forms {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+@keyframes fadeIn  {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.content {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+form {
+    align-items: center;
+    animation: fadeIn 0.5s ease-in-out;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.form-header {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.form-header h1 {
+    color: var(--primary);
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.form-header legend {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.form-header legend mark.create {
+    background-color: var(--create);
+    color: var(--background);
+    padding: 0 .5rem;
+}
+
+.form-header legend mark.read {
+    background-color: var(--read);
+    padding: 0 .5rem;
+}
+
+.form-header legend mark.update {
+    background-color: var(--update);
+    color: var(--background);
+    padding: 0 .5rem;
+}
+
+.form-header legend mark.delete {
+    background-color: var(--delete);
+    color: var(--background);
+    padding: 0 .5rem;
+}
+
+.form-main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 55%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    gap: .5rem;
+}
+
+.form-group input, .form-group select {
+    background-color: var(--gray-light);
+    border: 2px solid var(--gray);
+    border-radius: 4px;
+    color: var(--gray-dark);
+    font-size: 1rem;
+    padding: .5rem 1rem;
+    transition: all .1s ease-in-out;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+.content h2 {
+    margin-bottom: .5rem;
+}
+
+.content p, .content li {
+    font-size: 1.2rem;
+}
+
+.content p a {
+    color: var(--primary);
+    font-weight: bold;
+    transition: all 0.1s ease-in-out;
+}
+
+.content p a:hover {
+    color: var(--gray-dark);
+    text-decoration: underline;
+    text-decoration-style: wavy;
+}
+
+.content p > span {
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.content p > a.panel {
+    color: var(--gray-dark);
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: none;
+    transition: all .1s ease-in-out;
+}
+
+.content p > a.panel:hover {
+    color: var(--primary);
+    text-decoration: underline;
+    text-decoration-style: wavy;
+}
+
+.eye {
+    color: var(--text-color);
+    vertical-align: middle;
+}
+
+.form-button {
+    background-color: var(--primary);
+    border: none;
+    border-radius: 4px;
+    color: var(--background);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-left: 50%;
+    max-width: 60%;
+    padding: 0.75rem 1.5rem;
+    text-transform: uppercase;
+    transform: translateX(-50%);
+    transition: all .1s ease-in-out;
+}
+
+.form-button:hover {
+    background-color: var(--gray-light);
+    color: var(--primary);
+}
+
+.content ul {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-top: 1rem;
+}
+
+.content ul li {
+    font-weight: 500;
+}
+
+.content ul li a {
+    color: var(--update);
+    font-weight: 600;
+    transition: all 0.1s ease-in-out;
+}
+
+.content ul li a:hover {
+    color: var(--gray-dark);
+    text-decoration: underline;
+    text-decoration-style: wavy;
+}
+
+.result {
+    align-items: center;
+    animation: fadeIn 0.5s ease-in-out;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.result-title {
+    color: var(--primary);
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.result-response {
+    color: var(--gray-dark);
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.response-attrs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1rem 0;
+    padding: 2rem 0;
+    width: 30%;
+}
+
+ul > li.response-attr {
+    color: var(--gray-dark);
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: 700;
+    justify-content: space-between;
+    text-transform: uppercase;
+}
+
+ul > li.response-attr .response-attr-value {
+    text-align: end;
+}
+
+.repeat-button, .delete-button-cancel {
+    background-color: var(--gray);
+    border: none;
+    border-radius: 4px;
+    color: var(--gray-dark);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    text-transform: uppercase;
+    transition: all .1s ease-in-out;
+}
+
+.repeat-button:hover {
+    background-color: var(--gray-light);
+}
+
+.delete-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.delete-button-confirm {
+    background-color: var(--delete);
+    border: none;
+    border-radius: 4px;
+    color: var(--background);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    text-transform: uppercase;
+    transition: all .1s ease-in-out;
+}
+
+.delete-button-cancel:hover {
+    background-color: var(--gray-light);
+}
+
+.delete-button-confirm:hover {
+    text-decoration: underline;
+    text-decoration-style: wavy;
+}
+
+.operations {
+    width: 100%;
+}
+
+.operations ul {
+    align-items: center;
+    background-color: var(--gray-light);
+    display: flex;
+}
+
+.operations ul li {
+    align-items: center;
+    border-top: 2px solid var(--gray);
+    color: var(--gray-dark);
+    cursor: pointer;
+    display: flex;
+    flex: .25;
+    font-size: 1.2rem;
+    font-weight: 600;
+    gap: .5rem;
+    justify-content: center;
+    padding: 1.5rem 0;
+    text-transform: uppercase;
+    transition: all .1s ease-in-out;
+}
+
+.operations ul li:hover {
+    background-color: var(--gray);
+}
+
+.operations ul li + li {
+    border-left: 2px solid var(--gray);
+}
+
+.active.create {
+    background-color: var(--create);
+    color: var(--background);
+}
+
+.active.create:hover {
+    background-color: var(--create);
+    color: var(--background);
+}
+
+.active.read {
+    background-color: var(--read);
+    color: var(--background);
+}
+
+.active.read:hover {
+    background-color: var(--read);
+    color: var(--background);
+}
+
+.active.updateQuery {
+    background-color: var(--update);
+    color: var(--background);
+}
+
+.active.updateQuery:hover {
+    background-color: var(--update);
+    color: var(--background);
+}
+
+.active.delete {
+    background-color: var(--delete);
+    color: var(--background);
+}
+
+.active.delete:hover {
+    background-color: var(--delete);
+    color: var(--background);
+}
+
+.operations ul li img {
+    width: 1.2rem;
+}
+
+aside {
+    align-items: center;
+    background-color: var(--gray-light);
+    border-left: 2px solid var(--gray);
+    display: flex;
+    flex: 0.4;
+    flex-direction: column;
+    max-height: calc(100vh - 300px);
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 0 1rem 1rem;
+}
+
+.empty {
+    align-items: center;
+    animation: fadeIn 0.5s ease-in-out;
+    color: var(--gray);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+    justify-content: center;
+    text-align: center;
+}
+
+.empty span {
+    font-weight: 500;
+}
+
+aside > header {
+    align-items: center;
+    animation: fadeIn 0.5s ease-in-out;
+    background-color: var(--gray-light);
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    position: sticky;
+    text-transform: none;
+    top: 0;
+    width: 100%;
+}
+
+aside > header h2 {
+    color: var(--gray-dark);
+}
+
+aside > header span {
+    color: var(--gray);
+    font-weight: 500;
+}
+
+aside > header span a {
+    color: var(--gray);
+    font-weight: 800;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    transition: all 0.1s ease-in-out;
+}
+
+aside > header span a:hover {
+    color: var(--gray-dark);
+    text-decoration-style: wavy;
+}
+
+table, td, th {
+    border: none;
+}
+
+table {
+    animation: fadeIn 0.5s ease-in-out;
+    border-collapse: collapse;
+    display: block;
+    flex: 1;
+    padding: 0 0.5rem;
+}
+
+.row {
+    font-weight: 700;
+}
+
+th {
+    color: var(--gray);
+}
+
+.address {
+    color: var(--gray);
+}
+
+.value {
+    color: var(--gray-dark);
+    padding: .2rem;
+}
+
+.value.created {
+    background-color: var(--create);
+    color: var(--gray-light);
+}
+
+.value.read {
+    background-color: var(--read);
+}
+
+.value.updated {
+    background-color: var(--update);
+    color: var(--gray-light);
+}
+
+.value.deleted {
+    background-color: var(--delete);
+    color: var(--gray-light);
+}
+
+.value.button {
+    align-items: center;
+    color: var(--gray);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    margin-left: .5rem;
+    transition: all .1s ease-in-out;
+}
+
+.value.button:hover {
+    color: var(--gray-dark);
+}
+
+.value.button svg.hidden {
+    display: none;
+}
+
+footer {
+    background-color: var(--primary-light);
+    border-top: 2px solid var(--primary);
+    display: flex;
+    font-weight: 500;
+    justify-content: space-between;
+    padding: 1rem 2rem 1.5rem;
+}
+
+footer > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    height: 100%;
+    justify-content: space-between;
+}
+
+footer > div ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+footer h2 {
+    color: var(--primary);
+    font-weight: 800;
+}
+
+.attributions a {
+    color: var(--text-color);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    transition: all 0.1s ease-in-out;
+}
+
+.attributions a:hover {
+    color: var(--primary);
+    text-decoration-style: wavy;
+}
+
+@media screen and (max-width: 992px) {
+    header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .logo {
+        scale: 0.8;
+    }
+
+    .logotipo span a:active {
+        color: var(--background);
+    }
+
+    header .rate {
+        scale: 0.8;
+    }
+
+    header .rate:active {
+        background-color: var(--primary);
+        color: var(--background);
+        text-decoration-style: wavy;
+    }
+
+    p {
+        line-height: 1.1;
+    }
+
+    main {
+        flex-direction: column;
+    }
+
+    .container {
+        min-height: 90vh;
+    }
+
+    form {
+        gap: 1.5rem;
+    }
+
+    .form-header {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 90%;
+    }
+
+    .form-header h1 {
+        text-align: center;
+    }
+
+    .form-header legend {
+        line-height: 1.5rem;
+    }
+
+    .form-main {
+        width: 100%;
+    }
+
+    .content p > a.panel {
+        text-decoration: underline;
+    }
+
+    .content p > a.panel:active {
+        color: var(--primary);
+        text-decoration-style: wavy;
+    }
+
+    .form-button:active {
+        background-color: var(--gray-light);
+        color: var(--primary);
+    }
+
+    .content ul li a:active {
+        color: var(--gray-dark);
+        text-decoration: underline;
+        text-decoration-style: wavy;
+    }
+
+    .result-title {
+        text-align: center;
+    }
+
+    .result img {
+        width: 8rem;
+    }
+
+    .response-attrs {
+        width: 100%;
+    }
+
+    ul > li.response-attr {
+        font-size: 1.2rem;
+    }
+
+    .repeat-button:active {
+        background-color: var(--gray-light);
+    }
+
+    .delete-button-cancel:active {
+        background-color: var(--gray-light);
+    }
+
+    .delete-button-confirm:active {
+        text-decoration: underline;
+        text-decoration-style: wavy;
+    }
+
+    .operations ul {
+        overflow: hidden;
+        overflow-x: scroll;
+    }
+
+    .operations ul li {
+        border-bottom: 2px solid var(--gray);
+        padding: 1.5rem;
+    }
+
+    .operations ul li:active {
+        background-color: var(--gray);
+    }
+
+    .active.create:active {
+        background-color: var(--create);
+        color: var(--background);
+    }
+
+    .active.read:active {
+        background-color: var(--read);
+        color: var(--background);
+    }
+
+    .active.updateQuery:active {
+        background-color: var(--update);
+        color: var(--background);
+    }
+
+    .active.delete:active {
+        background-color: var(--delete);
+        color: var(--background);
+    }
+
+    aside {
+        flex: 1;
+        min-height: 50vh;
+    }
+
+    .empty {
+        height: 80vh;
+    }
+
+    aside > header {
+        width: 100vw;
+    }
+
+    aside > header span a:active {
+        color: var(--gray-dark);
+        text-decoration-style: wavy;
+    }
+
+    .value.button:active {
+        color: var(--gray-dark);
+    }
+
+    footer {
+        align-items: center;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    footer h2 {
+        text-align: center;
+    }
+
+    .attributions a:active {
+        color: var(--primary);
+        text-decoration-style: wavy;
+    }
+}
+
+@media screen and (min-width: 993px) and (max-width: 1440px) {
+    aside {
+        max-height: max-content;
+    }
+}
