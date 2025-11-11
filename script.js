@@ -425,8 +425,8 @@ function DAO(data, operation, oldData = null) {
                     let productInBytes = convertToBytesFromHex(products[i]);
                     let product = convertToProduct(productInBytes);
 
-                    if (product.code === oldData.code) {
-                        if (compareProductsInBytes(updatedProductInBytes, productInBytes) <= 0) {
+                    if (product.code === oldData.code && product.tombstone === false) {
+                        if (compareProductsInHex(updatedProductInHex, products[i]) <= 0) {
                             updatedProduct.id = product.id;
                             updatedProductInBytes = convertToBytesFromProduct(updatedProduct);
                             updatedProductInHex = convertToHex(updatedProductInBytes);
@@ -744,7 +744,7 @@ function hexToBytes(hex) {
     return bytes;
 }
 
-function compareProductsInBytes(productA, productB) {
+function compareProductsInHex(productA, productB) {
     let productALength = 0;
     let productBLength = 0;
 
