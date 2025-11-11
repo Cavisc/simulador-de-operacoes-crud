@@ -429,6 +429,11 @@ function DAO(data, operation, oldData = null) {
 
                     if (product.code === oldData.code) {
                         if (compareProductsInBytes(updatedProductInBytes, productInBytes) <= 0) {
+                            updatedProduct.id = product.id;
+                            updatedProductInBytes = convertToBytesFromProduct(updatedProduct);
+                            updatedProductInHex = convertToHex(updatedProductInBytes);
+                            lastId--;
+
                             products[i] = updatedProductInHex;
                             panelInformation.index = i;
                             panelInformation.operation = 'updated';
@@ -742,10 +747,19 @@ function hexToBytes(hex) {
 }
 
 function compareProductsInBytes(productA, productB) {
+    let productALength = 0;
+    let productBLength = 0;
+
     for (let i = 0; i < productA.length; i++) {
-        if (productA[i] < productB[i]) return -1;
-        if (productA[i] > productB[i]) return 1;
+        productALength += productA[i].length;
+        productBLength += productB[i].length;
     }
+
+    console.log(productA, productB);
+    console.log(productALength, productBLength);
+
+    if (productALength < productBLength) return -1;
+    if (productALength > productBLength) return 1;
 
     return 0;
 }
