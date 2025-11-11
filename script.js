@@ -1,5 +1,3 @@
-// TODO: ADICIONAR LÓGICA PARA REVELAR VALORES EM TEXTO AO CLICAR NO ÍCONE DE OLHO
-
 const container = document.querySelector('.container');
 const panel = document.getElementById('panel');
 const operationButtons = document.querySelectorAll('.operation-button');
