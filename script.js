@@ -12,6 +12,7 @@ let panelInformation = {
     operation: null
 };
 let eyeButtons = null;
+let linesInformation = [];
 let lineInformation = [];
 
 operationButtons.forEach(operationButton => {
@@ -909,16 +910,21 @@ function buildPanel() {
                 
                 let line = document.getElementById(`${eyeButton.classList[2]}`);
                 let informations = line.querySelectorAll(".information");
+                lineInformation = [];
 
                 if (action === 'decode') {
                     informations.forEach(information => {
                         lineInformation.push(information.textContent);
+                        linesInformation[eyeButton.classList[2]] = lineInformation;
+
                         let informationInBytes = hexToBytes(information.textContent);
                         let informationString = bytesToString(informationInBytes);
                         information.textContent = (isSpecialChar(informationString) || informationString.length === 0) ? ".." : informationString.concat("     ");
                     });
                 }
                 else if (action === 'encode') {
+                    lineInformation = linesInformation[eyeButton.classList[2]];
+
                     informations.forEach(information => {
                         information.textContent = lineInformation.shift();
                     });
