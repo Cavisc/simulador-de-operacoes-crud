@@ -754,9 +754,6 @@ function compareProductsInHex(productA, productB) {
         productBLength += productB[i].length;
     }
 
-    console.log(productA, productB);
-    console.log(productALength, productBLength);
-
     if (productALength < productBLength) return -1;
     if (productALength > productBLength) return 1;
 
