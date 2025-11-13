@@ -33,6 +33,8 @@ operationButtons.forEach(operationButton => {
             currentOperation = operation;
             loadOperationForm(operation);
         }
+
+        window.scrollTo(0, 0);
     });
 });
 
