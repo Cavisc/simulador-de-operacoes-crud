@@ -315,7 +315,11 @@ function DAO(data, operation, oldData = null) {
             try {
                 let newProductInBytes = convertToBytesFromProduct(newProduct);
                 let newProductInHex = convertToHex(newProductInBytes);
+                
+                let newProductLengthBytes = intToBytes(newProductInBytes.join('').length);
+                let newProductLengthHex = bytesToHex(newProductLengthBytes);
 
+                newProductInHex.splice(1, 0, newProductLengthHex);
                 products.push(newProductInHex);
 
                 panelInformation.index = products.length - 1;
