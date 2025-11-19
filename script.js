@@ -428,15 +428,26 @@ function DAO(data, operation, oldData = null) {
                 let updatedProductInBytes = convertToBytesFromProduct(updatedProduct);
                 let updatedProductInHex = convertToHex(updatedProductInBytes);
 
+                let updatedProductLengthBytes = intToBytes(updatedProductInBytes.join('').length);
+                let updatedProductLengthHex = bytesToHex(updatedProductLengthBytes);
+
+                updatedProductInHex.splice(1, 0, updatedProductLengthHex);
+
                 for (let i = 0; i < products.length; i++) {
                     let productInBytes = convertToBytesFromHex(products[i]);
                     let product = convertToProduct(productInBytes);
 
                     if (product.code === oldData.code && product.tombstone === false) {
-                        if (compareProductsInHex(updatedProductInHex, products[i]) <= 0) {
+                        if (compareProductsLength(updatedProductInHex, products[i]) <= 0) {
                             updatedProduct.id = product.id;
                             updatedProductInBytes = convertToBytesFromProduct(updatedProduct);
                             updatedProductInHex = convertToHex(updatedProductInBytes);
+
+                            updatedProductLengthBytes = intToBytes(updatedProductInBytes.join('').length);
+                            updatedProductLengthHex = bytesToHex(updatedProductLengthBytes);
+
+                            updatedProductInHex.splice(1, 0, updatedProductLengthHex);
+
                             lastId--;
 
                             products[i] = updatedProductInHex;
@@ -449,6 +460,12 @@ function DAO(data, operation, oldData = null) {
 
                             productInBytes = convertToBytesFromProduct(product);
                             let productInHex = convertToHex(productInBytes);
+
+                            let productLengthBytes = intToBytes(productInBytes.join('').length);
+                            let productLengthHex = bytesToHex(productLengthBytes);
+
+                            productInHex.splice(1, 0, productLengthHex);
+
                             products[i] = productInHex;
                             
                             products.push(updatedProductInHex);
@@ -539,6 +556,12 @@ function DAO(data, operation, oldData = null) {
 
                                     productInBytes = convertToBytesFromProduct(product);
                                     let productInHex = convertToHex(productInBytes);
+
+                                    let productLengthBytes = intToBytes(productInBytes.join('').length);
+                                    let productLengthHex = bytesToHex(productLengthBytes);
+
+                                    productInHex.splice(1, 0, productLengthHex);
+
                                     products[i] = productInHex;
 
                                     panelInformation.index = i;
@@ -674,6 +697,7 @@ function convertToBytesFromHex(hexValues) {
     bytes.push(hexToBytes(hexValues[3]));
     bytes.push(hexToBytes(hexValues[4]));
     bytes.push(hexToBytes(hexValues[5]));
+    bytes.push(hexToBytes(hexValues[6]));
 
     return bytes;
 }
@@ -681,11 +705,11 @@ function convertToBytesFromHex(hexValues) {
 function convertToProduct(bytes) {
     return {
         tombstone: bytesToBoolean(bytes[0]),
-        id: bytesToInt(bytes[1]),
-        code: bytesToString(bytes[2]),
-        name: bytesToString(bytes[3]),
-        category: bytesToString(bytes[4]),
-        price: bytesToFloat(bytes[5]).toFixed(2)
+        id: bytesToInt(bytes[2]),
+        code: bytesToString(bytes[3]),
+        name: bytesToString(bytes[4]),
+        category: bytesToString(bytes[5]),
+        price: bytesToFloat(bytes[6]).toFixed(2)
     };
 }
 
@@ -751,14 +775,9 @@ function hexToBytes(hex) {
     return bytes;
 }
 
-function compareProductsInHex(productA, productB) {
-    let productALength = 0;
-    let productBLength = 0;
-
-    for (let i = 0; i < productA.length; i++) {
-        productALength += productA[i].length;
-        productBLength += productB[i].length;
-    }
+function compareProductsLength(productA, productB) {
+    let productALength = bytesToInt(hexToBytes(productA[1]));
+    let productBLength = bytesToInt(hexToBytes(productB[1]));
 
     if (productALength < productBLength) return -1;
     if (productALength > productBLength) return 1;
