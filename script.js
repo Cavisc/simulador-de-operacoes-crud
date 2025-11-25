@@ -82,7 +82,7 @@ function loadOperationForm(operation, data = null) {
     });
 }
 
-function loadWelcomeContent (){
+function loadWelcomeContent(){
     return `<div class="content">
                     <h2>Bem-vindo(a) ao Simulador de Operações CRUD em Arquivos Estruturados</h2>
                     <p>
@@ -123,11 +123,11 @@ function loadWelcomeContent (){
                 </div>
 
                 <div class="content">
-                    <h2>Sua Contribuição é Importante</h2>
+                    <h2>Agradecimento à Comunidade Acadêmica</h2>
                     <p>
-                        Após experimentar as operações e entender o fluxo de dados, convidamos você a contribuir para o aprimoramento deste trabalho.<br>
-                        Clique no botão "<strong>Avaliar</strong>" no cabeçalho e responda ao breve questionário. Sua avaliação sobre a usabilidade e utilidade didática 
-                        deste projeto é fundamental para a comunidade acadêmica.
+                        Gostaríamos de agradecer a todos os estudantes que participaram da avaliação deste trabalho.
+                        As contribuições recebidas foram essenciais para validar a eficácia educacional deste simulador
+                        e comprovar sua utilidade no ensino de operações com arquivos estruturados.
                     </p>
                 </div>`
     ;

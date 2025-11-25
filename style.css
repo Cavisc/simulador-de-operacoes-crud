@@ -100,30 +100,6 @@ header {
     gap: .4rem;
 }
 
-header .rate {
-    align-items: center;
-    background-color: var(--gray-light);
-    border-radius: 4px;
-    color: var(--primary);
-    cursor: pointer;
-    display: flex;
-    font-size: 1rem;
-    font-weight: bolder;
-    height: 4rem;
-    justify-content: center;
-    text-decoration: underline;
-    text-decoration-style: dashed;
-    text-transform: uppercase;
-    transition: all .1s ease-in-out;
-    width: 8rem;
-}
-
-header .rate:hover {
-    background-color: var(--primary);
-    color: var(--background);
-    text-decoration-style: wavy;
-}
-
 a {
     text-decoration: none;
 }
