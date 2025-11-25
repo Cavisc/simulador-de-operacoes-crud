@@ -56,12 +56,8 @@
 - Persistência via localStorage
 
 - Visualização em tempo real da estrutura do arquivo destacando os registros manipulados pelas operações: 
-    <ul style="font-weight: bold; display: flex; gap: 1rem; justify-content: center; list-style: none;">
-        <li style="padding: 5px; width: 60px; background-color: #0cf574; color: #f8fafc; text-align: center;">CREATE</li>
-        <li style="padding: 5px; width: 60px; background-color: #c5edac; color: #353535; text-align: center;">READ</li>
-        <li style="padding: 5px; width: 60px; background-color: #f4ac45; color: #f8fafc; text-align: center;">UPDATE</li>
-        <li style="padding: 5px; width: 60px; background-color: #ff312e; color: #f8fafc; text-align: center;">DELETE</li>
-    </ul>
+
+    <img style="width: 100%;" src="./assets/screenshots/accent_colors.png">
 
 ## 👤 Avaliação de utilidade e usabilidade ([Resultados](https://docs.google.com/forms/d/1gqgBI8Z9zpwBa4Ilr3iUAaU5T4adpoVWq5fvtzSti9Q/edit#responses))
 
