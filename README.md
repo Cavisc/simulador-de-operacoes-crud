@@ -7,7 +7,7 @@
 - **Lucas Araujo Barduino Rodrigues**
 - **Marcos Paulo Miranda Pereira**
 
-## 📹 Link para o vídeo de demonstração: [Clique aqui](#)
+## 📹 Link para o vídeo de demonstração: [Clique aqui](https://youtu.be/RuJk4cwFUtw)
 
 ## 🌐 Link para o site: [Clique aqui](https://cavisc.github.io/simulador-de-operacoes-crud/)
 
@@ -78,7 +78,7 @@ Conclui-se que o Simulador de Operações CRUD é uma ferramenta educacional bem
 
 ### A página web com a visualização interativa do CRUD de produtos foi criada? Sim
 
-### Há um vídeo de até 3 minutos demonstrando o uso da visualização? [Sim/Não]
+### Há um vídeo de até 3 minutos demonstrando o uso da visualização? Sim
 
 ### O trabalho foi criado apenas com HTML, CSS e JS? Sim
 
