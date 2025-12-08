@@ -82,7 +82,7 @@ Conclui-se que o Simulador de Operações CRUD é uma ferramenta educacional bem
 
 ### O trabalho foi criado apenas com HTML, CSS e JS? Sim
 
-### O relatório do trabalho foi entregue no APC? [Sim/Não]
+### O relatório do trabalho foi entregue no APC? Não. Ocorreu um erro durante a entrega.
 
 ### O trabalho está completo e funcionando sem erros de execução? Sim
 
