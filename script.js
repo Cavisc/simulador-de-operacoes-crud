@@ -438,26 +438,23 @@ function DAO(data, operation, oldData = null) {
                     let product = convertToProduct(productInBytes);
 
                     if (product.code === oldData.code && product.tombstone === false) {
+                        updatedProduct.id = product.id;
+                        lastId--;
+
+                        updatedProductInBytes = convertToBytesFromProduct(updatedProduct);
+                        updatedProductInHex = convertToHex(updatedProductInBytes);
+
+                        updatedProductLengthBytes = intToBytes(updatedProductInBytes.join('').length);
+                        updatedProductLengthHex = bytesToHex(updatedProductLengthBytes);
+
+                        updatedProductInHex.splice(1, 0, updatedProductLengthHex);
+
                         if (compareProductsLength(updatedProductInHex, products[i]) <= 0) {
-                            updatedProduct.id = product.id;
-                            updatedProductInBytes = convertToBytesFromProduct(updatedProduct);
-                            updatedProductInHex = convertToHex(updatedProductInBytes);
-
-                            updatedProductLengthBytes = intToBytes(updatedProductInBytes.join('').length);
-                            updatedProductLengthHex = bytesToHex(updatedProductLengthBytes);
-
-                            updatedProductInHex.splice(1, 0, updatedProductLengthHex);
-
-                            lastId--;
-
                             products[i] = updatedProductInHex;
                             panelInformation.index = i;
-                            panelInformation.operation = 'updated';
-                            break;
                         }
                         else {
                             product.tombstone = true;
-
                             productInBytes = convertToBytesFromProduct(product);
                             let productInHex = convertToHex(productInBytes);
 
@@ -467,12 +464,13 @@ function DAO(data, operation, oldData = null) {
                             productInHex.splice(1, 0, productLengthHex);
 
                             products[i] = productInHex;
-                            
+                        
                             products.push(updatedProductInHex);
                             panelInformation.index = products.length - 1;
-                            panelInformation.operation = 'updated';
-                            break;
                         }
+
+                        panelInformation.operation = 'updated';
+                        break;
                     }
                 }
 
